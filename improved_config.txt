@@ -1,0 +1,20 @@
+
+# 개선된 PINN 설정
+# FSI 손실 문제 해결을 위한 수정된 파라미터들
+
+class TrainingConfig:
+    # 학습률 감소
+    adam_lr: float = 5e-4  # 1e-3에서 감소
+    
+    # 손실 가중치 재조정
+    lambda_data: float = 1.0
+    lambda_pde: float = 1.0  
+    lambda_bc: float = 0.1   # 1.0에서 감소
+    lambda_fsi: float = 0.001  # 1.0에서 대폭 감소
+    
+    # 그래디언트 클리핑
+    grad_clip: float = 1.0
+    
+    # 조기 종료
+    early_stopping: bool = True
+    patience: int = 500
